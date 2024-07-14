@@ -18,5 +18,5 @@ indent_style = tab
 [*.md]
 max_line_length = 80
 
-[*.yaml|*.yml]
+[{*.yml,*.yaml}]
 indent_size = 2
