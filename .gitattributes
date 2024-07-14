@@ -1,0 +1,11 @@
+*.php text eol=lf
+
+/.phive export-ignore
+/tests export-ignore
+/tools export-ignore
+/.editorconfig export-ignore
+/.git* export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/infection.json5.dist export-ignore
+/phpstan.dist.neon export-ignore
+/phpunit.xml.dist export-ignore

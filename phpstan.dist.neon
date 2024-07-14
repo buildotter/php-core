@@ -1,0 +1,11 @@
+includes:
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+	level: max
+	bootstrapFiles:
+		- ./tools/phpunit.phar
+	paths:
+		- src/
+		- tests/

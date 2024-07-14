@@ -1,0 +1,30 @@
+{
+    "$schema": "https://raw.githubusercontent.com/infection/infection/0.26.21/resources/schema.json",
+    "source": {
+        "directories": [
+            "src",
+        ]
+    },
+    "timeout": 10,
+    "testFramework":"phpunit",
+    "phpUnit": {
+        "customPath": "./tools/phpunit.phar",
+    },
+    "mutators": {
+        "@default": true,
+        "DecrementInteger": {
+            "ignore": [
+                // Don't know how test could prevent this more than it already does
+                "Buildotter\\Core\\RandomMultiple::numberBetween",
+            ]
+        },
+        "IncrementInteger": {
+            "ignore": [
+                // Don't know how test could prevent this more than it already does
+                "Buildotter\\Core\\RandomMultiple::numberBetween",
+            ]
+        }
+    },
+    minMsi: 100,
+    minCoveredMsi: 100,
+}
