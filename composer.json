@@ -3,10 +3,13 @@
     "description": "Buildotter Core: Foundation to implement the Test Data Builder Pattern",
     "type": "library",
     "license": "GPL-3.0-or-later",
+    "keywords": ["php", "testing", "test", "data", "builder"],
+    "homepage": "https://github.com/buildotter/php-core",
     "authors": [
         {
             "name": "Benjamin Rambaud",
-            "email": "beram.job@gmail.com"
+            "email": "beram.job@gmail.com",
+            "homepage": "https://brambaud.github.io/"
         }
     ],
     "require": {
