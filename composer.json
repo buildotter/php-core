@@ -21,6 +21,9 @@
         "phpstan/phpstan-phpunit": "^1.4",
         "symfony/var-dumper": "^6.4"
     },
+    "suggest": {
+        "buildotter/php-maker-standalone": "Generate test data builder based on Buildotter Core"
+    },
     "autoload": {
         "psr-4": {
             "Buildotter\\Core\\": "src"
