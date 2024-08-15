@@ -8,7 +8,6 @@ use Buildotter\Core\BuildableWithArgUnpacking;
 use Buildotter\Core\Buildatable;
 use Buildotter\Core\RandomMultiple;
 use PHPUnit\Framework\TestCase;
-use function Buildotter\Tests\Core\random;
 use function PHPUnit\Framework\assertContainsOnlyInstancesOf;
 use function PHPUnit\Framework\assertCount;
 use function PHPUnit\Framework\assertGreaterThanOrEqual;
@@ -63,8 +62,7 @@ final class Baz
 {
     public function __construct(
         public string $value,
-    ) {
-    }
+    ) {}
 }
 
 /**
@@ -76,8 +74,7 @@ final class BazBuilder implements Buildatable
 
     public function __construct(
         public string $value,
-    ) {
-    }
+    ) {}
 
     public static function random(): static
     {

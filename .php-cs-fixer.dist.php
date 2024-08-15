@@ -32,6 +32,7 @@ return (new PhpCsFixer\Config())
                 ],
             ],
             'braces_position' => [
+                'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
                 'allow_single_line_anonymous_functions' => true,
                 'allow_single_line_empty_anonymous_classes' => true
             ],
@@ -63,6 +64,15 @@ return (new PhpCsFixer\Config())
                 'use_nullable_type_declaration' => true,
             ],
             'no_trailing_comma_in_singleline' => true,
+            'return_to_yield_from' => true,
+            'no_singleline_whitespace_before_semicolons' => true,
+            'no_whitespace_before_comma_in_array' => true,
+            'no_unused_imports' => true,
+            'ternary_operator_spaces' => true,
+            'return_type_declaration' => true,
+            'single_line_empty_body' => true,
+            'yoda_style' => true,
+            'concat_space' => ['spacing' => 'one'],
         ]
     )
     ->setRiskyAllowed(true)

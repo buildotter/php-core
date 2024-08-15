@@ -8,7 +8,6 @@ use Buildotter\Core\BuildableWithArgUnpacking;
 use Buildotter\Core\BuildableWithArray;
 use Buildotter\Core\Buildatable;
 use PHPUnit\Framework\TestCase;
-use function Buildotter\Tests\Core\random;
 use function PHPUnit\Framework\assertEquals;
 
 final class BuildatableTest extends TestCase
@@ -48,16 +47,14 @@ final class Foo
         public string $name,
         public int $number,
         public Bar $bar,
-    ) {
-    }
+    ) {}
 }
 
 final class Bar
 {
     public function __construct(
         public string $value,
-    ) {
-    }
+    ) {}
 }
 
 /**
@@ -71,8 +68,7 @@ final class FooBuilderWithArray implements Buildatable
         public string $name,
         public int $number,
         public Bar $bar,
-    ) {
-    }
+    ) {}
 
     public static function random(): static
     {
@@ -107,8 +103,7 @@ final class FooBuilderWithArgUnpacking implements Buildatable
         public string $name,
         public int $number,
         public Bar $bar,
-    ) {
-    }
+    ) {}
 
     public static function random(): static
     {
@@ -141,8 +136,7 @@ final class BarBuilder implements Buildatable
 
     public function __construct(
         public string $value,
-    ) {
-    }
+    ) {}
 
     public static function random(): static
     {
