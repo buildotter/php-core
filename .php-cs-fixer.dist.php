@@ -16,7 +16,7 @@ return (new PhpCsFixer\Config())
             'declare_strict_types' => true,
             'native_function_invocation' => [
                 'include' => ['@all'],
-                'exclude' => ['service', 'tagged_iterator'],
+                'exclude' => ['random'],
             ],
             'no_extra_blank_lines' => [
                 'tokens' => [
