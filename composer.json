@@ -47,6 +47,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "tools:clean": "git ls-files --others --ignored --exclude-from=.gitignore --exclude-per-directory=.gitignore --directory | awk -v quote='\"' -v OFS=\"\" '!/.idea/ {print quote,$$0,quote}' | xargs rm -rf",
         "tools:run": [
             "@tools:run:php-cs-fixer",
             "@tools:run:phpunit",
