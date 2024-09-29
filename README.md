@@ -1,11 +1,14 @@
-# Buildotter Core
+<div align="center">
+  <img alt="Buildotter Logo" src="https://avatars.githubusercontent.com/u/175545150?v=4&s=400" height="240"/>
+  <h1>Buildotter Core</h1>
+</div>
 
 [![Tests](https://github.com/buildotter/php-core/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/buildotter/php-core/actions?workflow=tests)
 [![License](https://img.shields.io/github/license/buildotter/php-core)](/LICENSE)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/buildotter/php-core)](https://github.com/buildotter/php-core/releases/latest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg?style=flat)](https://conventionalcommits.org)
 
-Foundation to implement the **Test Data Builder Pattern**.
+Foundation to implement the **Test Data Builder Pattern** in [PHP](https://www.php.net/).
 
 ## Installation
 
