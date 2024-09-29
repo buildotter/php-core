@@ -15,13 +15,13 @@
         "DecrementInteger": {
             "ignore": [
                 // Don't know how test could prevent this more than it already does
-                "Buildotter\\Core\\RandomMultiple::numberBetween",
+                "Buildotter\\Core\\Many::numberBetween",
             ]
         },
         "IncrementInteger": {
             "ignore": [
                 // Don't know how test could prevent this more than it already does
-                "Buildotter\\Core\\RandomMultiple::numberBetween",
+                "Buildotter\\Core\\Many::numberBetween",
             ]
         }
     },

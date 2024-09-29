@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Buildotter\Core;
 
-final class RandomMultiple
+final class Many
 {
     /**
      * @template T
@@ -19,7 +19,7 @@ final class RandomMultiple
 
         $collection = [];
         for ($i = 0; $i < $numberOfItems; $i++) {
-            $collection[] = $class::random()->build();
+            $collection[] = $class::new()->build();
         }
 
         return $collection;
@@ -38,7 +38,7 @@ final class RandomMultiple
 
         $collection = [];
         for ($i = 0; $i < $numberOfItems; $i++) {
-            $collection[] = $class::random();
+            $collection[] = $class::new();
         }
 
         return $collection;
