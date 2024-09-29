@@ -60,7 +60,7 @@ Furthermore, it helps to have a common foundation for the adoption of the patter
 ## Usage
 
 We tried not to be too opinionated about the foundation here.
-For instance, we like to use functions like `anElephant()` instead of `ElephantBuilder::random()`
+For instance, we like to use functions like `anElephant()` instead of `ElephantBuilder::new()`
 (we find it more readable and allow us to focus on what is important) but nothing
 forces you to do the same.
 
@@ -70,11 +70,13 @@ You may found the name weird, it is a mix of "build" and "data" with the suffix 
 "-able" is used to form adjectives from verbs, with the meaning "capable of, fit for, tending to".
 With this name, we want to express that the object is capable of building data as a test data builder.
 
-The `Buildotter\Core\Buildatable::random()` method is the named constructor to create a new instance of the class with random but commonly used or safe values.
+The `Buildotter\Core\Buildatable::new()` method is the named constructor to create a new instance of the class with commonly used or safe values.
 Imagine that you develop a dating app, you know the age of your customers.
 Most of the time you don't mind about the exact age, you just need one respecting the invariants of your domain
 (see [Propery-Based Testing](https://beram-presentation.gitlab.io/property-based-testing-101) for more about this).
 It is less likely that a customer is 300 or 10 years old than between 18 and 60 years old for instance.
+It means that a commonly used or safe value for the age of a customer is between 18 and 60 years old.
+So instead of choosing an arbitrary value, you may use a random value between 18 and 60 years old.
 
 The `Buildotter\Core\Buildatable::build()` method to create a new object using the values in its properties.
 
@@ -107,7 +109,7 @@ You may choose to not use them at all.
 ### Build multiple objects
 
 You may need multiple objects of the same type at once.
-`Buildotter\Core\RandomMultiple` static methods are here to help you.
+`Buildotter\Core\Many` static methods are here to help you.
 
 ## Example
 
@@ -153,7 +155,7 @@ final readonly class ElephantBuilder implements Buildatable
         private array $topics,
     ) {}
 
-    public static function random(): self
+    public static function new(): self
     {
         $random = \random();
 
@@ -228,7 +230,7 @@ function random(): \Faker\Generator
 
 function anElephant(): ElephantBuilder
 {
-    return ElephantBuilder::random();
+    return ElephantBuilder::new();
 }
 
 /**
@@ -236,12 +238,12 @@ function anElephant(): ElephantBuilder
  */
 function someElephants(int|null $numberOfItems = null): array
 {
-    return RandomMultiple::from(ElephantBuilder::class, $numberOfItems);
+    return Many::from(ElephantBuilder::class, $numberOfItems);
 }
 
 function aTopic(): TopicBuilder
 {
-    return TopicBuilder::random();
+    return TopicBuilder::new();
 }
 
 /**
@@ -249,7 +251,7 @@ function aTopic(): TopicBuilder
  */
 function someTopics(int|null $numberOfItems = null): array
 {
-    return RandomMultiple::from(TopicBuilder::class, $numberOfItems);
+    return Many::from(TopicBuilder::class, $numberOfItems);
 }
 ```
 

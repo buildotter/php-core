@@ -14,10 +14,10 @@ final class BuildatableTest extends TestCase
 {
     public function test_it_is_buildatable_with_array(): void
     {
-        $fooBuiltWithArray = FooBuilderWithArray::random()
+        $fooBuiltWithArray = FooBuilderWithArray::new()
             ->named($text = random()->name())
             ->with(['number' => $n = random()->randomNumber()])
-            ->with(['bar' => $bar = BarBuilder::random()])
+            ->with(['bar' => $bar = BarBuilder::new()])
             ->build();
 
         assertEquals(
@@ -28,10 +28,10 @@ final class BuildatableTest extends TestCase
 
     public function test_it_is_buildatable_with_arg_unpacking(): void
     {
-        $fooBuiltWithArgsUnpacking = FooBuilderWithArgUnpacking::random()
+        $fooBuiltWithArgsUnpacking = FooBuilderWithArgUnpacking::new()
             ->named($text = random()->name())
             ->with(number: $n = random()->randomNumber())
-            ->with(bar: $bar = BarBuilder::random())
+            ->with(bar: $bar = BarBuilder::new())
             ->build();
 
         assertEquals(
@@ -70,14 +70,14 @@ final class FooBuilderWithArray implements Buildatable
         public Bar $bar,
     ) {}
 
-    public static function random(): static
+    public static function new(): static
     {
         $random = random();
 
         return new static(
             $random->name(),
             $random->randomNumber(),
-            BarBuilder::random()->build(),
+            BarBuilder::new()->build(),
         );
     }
 
@@ -105,14 +105,14 @@ final class FooBuilderWithArgUnpacking implements Buildatable
         public Bar $bar,
     ) {}
 
-    public static function random(): static
+    public static function new(): static
     {
         $random = random();
 
         return new static(
             $random->name(),
             $random->randomNumber(),
-            BarBuilder::random()->build(),
+            BarBuilder::new()->build(),
         );
     }
 
@@ -138,7 +138,7 @@ final class BarBuilder implements Buildatable
         public string $value,
     ) {}
 
-    public static function random(): static
+    public static function new(): static
     {
         $random = random();
 
