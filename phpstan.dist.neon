@@ -1,4 +1,6 @@
 includes:
+	- phar://phpstan.phar/conf/bleedingEdge.neon
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/phpstan/phpstan-phpunit/rules.neon
 
@@ -9,3 +11,12 @@ parameters:
 	paths:
 		- src/
 		- tests/
+	ignoreErrors:
+		# We are purposely doing this to support the `::with` feature.
+		# If one day we found another and better way to do this,
+		# then we may stop ignoring this error.
+		-
+			message: '#Variable property access on [a-zA-Z0-9\\_]+.#'
+			paths:
+				- src/BuildableWithArgUnpacking.php
+				- src/BuildableWithArray.php

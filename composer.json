@@ -19,6 +19,7 @@
         "fakerphp/faker": "^1.23",
         "phpstan/phpstan": "^1.11",
         "phpstan/phpstan-phpunit": "^1.4",
+        "phpstan/phpstan-strict-rules": "^1.6",
         "symfony/var-dumper": "^6.4"
     },
     "suggest": {
