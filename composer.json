@@ -17,9 +17,10 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "phpstan/phpstan": "^1.11",
-        "phpstan/phpstan-phpunit": "^1.4",
-        "phpstan/phpstan-strict-rules": "^1.6",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
         "symfony/var-dumper": "^6.4"
     },
     "suggest": {
