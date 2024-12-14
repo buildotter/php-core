@@ -7,7 +7,9 @@ namespace Buildotter\Tests\Core;
 use Buildotter\Core\BuildableWithArgUnpacking;
 use Buildotter\Core\BuildableWithArray;
 use Buildotter\Core\Buildatable;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use function PHPUnit\Framework\assertEquals;
 
 final class BuildatableTest extends TestCase
@@ -38,6 +40,35 @@ final class BuildatableTest extends TestCase
             new Foo($text, $n, $bar->build()),
             $fooBuiltWithArgsUnpacking,
         );
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function test_it_is_not_buildatable_with_bad_arg_unpacking(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Arguments test dont match with call function');
+        FooBuilderWithArgUnpacking::new()
+           ->with(badargument: 'test', number: random()->randomNumber())
+           ->build();
+        FooBuilderWithArray::new()
+            ->with(['badargument' => 'test'])
+            ->build();
+    }
+
+    public function test_it_is_not_buildatable_with_bad_arg_array(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Arguments test dont match with call function');
+        FooBuilderWithArray::new()
+            ->with(
+                values: [
+                    'badargument' => 'test',
+                    'number' => random()->randomNumber(),
+                ],
+            )
+            ->build();
     }
 }
 
