@@ -6,6 +6,7 @@ namespace Buildotter\Core;
 
 trait BuildableWithArray
 {
+    use BuildableValidateParam;
     /**
      * @param array<string, mixed> $values
      */
@@ -14,6 +15,11 @@ trait BuildableWithArray
         $r = new \ReflectionClass(static::class);
 
         $clone = $r->newInstanceWithoutConstructor();
+
+        $this->validateArguments(
+            arguments: $values,
+            properties: $r->getProperties(),
+        );
 
         foreach ($r->getProperties() as $property) {
             $field = $property->name;
