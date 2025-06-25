@@ -27,10 +27,11 @@ final class Many
 
     /**
      * @template T
+     * @template TBuilder of Buildatable<T>
      *
-     * @param class-string<Buildatable<T>> $class
+     * @param class-string<TBuilder> $class
      *
-     * @return array<Buildatable<T>>
+     * @return array<TBuilder>
      */
     public static function toBuildFrom(string $class, int|null $numberOfItems = null): array
     {
