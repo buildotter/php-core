@@ -7,6 +7,7 @@ namespace Buildotter\Tests\Core;
 use Buildotter\Core\BuildableWithArgUnpacking;
 use Buildotter\Core\BuildableWithArray;
 use Buildotter\Core\Buildatable;
+use Buildotter\Core\Exception\UnknownPropertyException;
 use PHPUnit\Framework\TestCase;
 use function PHPUnit\Framework\assertEquals;
 
@@ -38,6 +39,59 @@ final class BuildatableTest extends TestCase
             new Foo($text, $n, $bar->build()),
             $fooBuiltWithArgsUnpacking,
         );
+    }
+
+    public function test_it_is_not_buildatable_with_bad_arg_unpacking(): void
+    {
+        $this->expectException(UnknownPropertyException::class);
+        $this->expectExceptionMessage('The following properties do not exist in "Buildotter\Tests\Core\FooBuilderWithArgUnpacking": "0", "doesNotExist", "doesNotExistEither".');
+
+        FooBuilderWithArgUnpacking::new()
+            ->with(
+                random()->word(),
+                doesNotExist: random()->word(),
+                number: random()->randomNumber(),
+                doesNotExistEither: random()->word(),
+            )
+            ->build();
+    }
+
+    public function test_it_is_not_buildatable_with_bad_arg_unpacking_2(): void
+    {
+        $this->expectException(UnknownPropertyException::class);
+        $this->expectExceptionMessage('The following properties do not exist in "Buildotter\Tests\Core\FooBuilderWithArgUnpacking": "doesNotExist".');
+
+        FooBuilderWithArgUnpacking::new()
+            ->named(random()->name())
+            ->with(doesNotExist: random()->word())
+            ->with(doesNotExistEither: random()->word())
+            ->build();
+    }
+
+    public function test_it_is_not_buildatable_with_bad_arg_array(): void
+    {
+        $this->expectException(UnknownPropertyException::class);
+        $this->expectExceptionMessage('The following properties do not exist in "Buildotter\Tests\Core\FooBuilderWithArray": "doesNotExist", "doesNotExistEither".');
+
+        FooBuilderWithArray::new()
+            ->with([
+                'doesNotExist' => random()->word(),
+                'number' => random()->randomNumber(),
+                'doesNotExistEither' => random()->word(),
+            ])
+            ->build();
+    }
+
+    public function test_it_is_not_buildatable_with_bad_arg_array_2(): void
+    {
+        $this->expectException(UnknownPropertyException::class);
+        $this->expectExceptionMessage('The following properties do not exist in "Buildotter\Tests\Core\FooBuilderWithArray": "doesNotExist".');
+
+        FooBuilderWithArray::new()
+            ->named(random()->name())
+            ->with(['doesNotExist' => random()->word()])
+            ->with(['doesNotExistEither' => random()->word()])
+            ->build();
     }
 }
 
